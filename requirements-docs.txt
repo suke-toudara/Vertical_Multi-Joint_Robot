@@ -1,0 +1,2 @@
+# ドキュメントサイト (GitHub Pages) のビルド用
+mkdocs-material==9.5.44

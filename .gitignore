@@ -37,3 +37,6 @@ fp-info-cache
 Thumbs.db
 .vscode/
 .idea/
+
+# MkDocs のビルド成果物
+/site/

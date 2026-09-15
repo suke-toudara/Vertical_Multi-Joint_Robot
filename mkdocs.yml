@@ -1,0 +1,68 @@
+site_name: VMJR — 3軸 垂直多関節ロボット
+site_description: 3自由度 垂直多関節ロボットの設計資料 (機構・電装・ファーム・上位ソフト)
+site_url: https://suke-toudara.github.io/Vertical_Multi-Joint_Robot/
+repo_url: https://github.com/suke-toudara/Vertical_Multi-Joint_Robot
+repo_name: suke-toudara/Vertical_Multi-Joint_Robot
+edit_uri: edit/claude/intelligent-ritchie-846f3v/docs/
+
+docs_dir: docs
+
+theme:
+  name: material
+  language: ja
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - content.code.copy
+    - content.action.edit
+    - search.suggest
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue grey
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: ダークモードに切り替え
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue grey
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: ライトモードに切り替え
+
+plugins:
+  - search:
+      lang: ja
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.arithmatex:
+      generic: true
+
+nav:
+  - ホーム: index.md
+  - 設計資料:
+      - 設計計算書 (可搬質量・速度・精度): design_calculations.md
+      - 要求仕様: requirements.md
+      - 機体諸元: specifications.md
+      - システム構成: architecture.md
+      - 運動学: kinematics.md
+      - 安全設計: safety.md
+  - 開発:
+      - プロジェクト構成: project_structure.md
+      - 開発環境構築: setup.md
+  - 設計判断記録 (ADR):
+      - ADR-0001 設計判断を記録する: adr/0001-record-architecture-decisions.md

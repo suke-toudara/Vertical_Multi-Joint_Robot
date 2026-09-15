@@ -21,8 +21,28 @@
 
 ## 設計資料
 
-- **[docs/design_calculations.md](docs/design_calculations.md)** — 可搬質量・速度性能・位置決め精度の試算 (計算過程つき)。
-  数値は `tools/calc_payload.py` の出力で、前提を変えたら再実行して更新する。
+**📖 <https://suke-toudara.github.io/Vertical_Multi-Joint_Robot/>** — GitHub Pages で公開中
+
+| ドキュメント | 内容 |
+|---|---|
+| [設計計算書](https://suke-toudara.github.io/Vertical_Multi-Joint_Robot/design_calculations/) | 可搬質量・速度性能・位置決め精度の試算 (計算過程つき) |
+| [要求仕様](https://suke-toudara.github.io/Vertical_Multi-Joint_Robot/requirements/) | 可搬質量・リーチ・繰返し精度の目標値 |
+| [機体諸元](https://suke-toudara.github.io/Vertical_Multi-Joint_Robot/specifications/) | 確定値・質量内訳・機体番号との対応 |
+| [システム構成](https://suke-toudara.github.io/Vertical_Multi-Joint_Robot/architecture/) | ブロック図・責務分担・通信仕様 |
+| [運動学](https://suke-toudara.github.io/Vertical_Multi-Joint_Robot/kinematics/) | 座標系・DHパラメータ・逆運動学・特異点 |
+| [安全設計](https://suke-toudara.github.io/Vertical_Multi-Joint_Robot/safety/) | 非常停止・リミットの三重化 |
+
+設計計算書の数値は `tools/calc_payload.py` の出力。前提を変えたら再実行して更新する。
+
+### サイトのローカル確認
+
+```bash
+pip install -r requirements-docs.txt
+mkdocs serve          # http://127.0.0.1:8000
+```
+
+`docs/` 以下を更新してデフォルトブランチに push すると、
+`.github/workflows/docs.yml` が自動でビルド・デプロイする。
 
 ## 設計上の原則
 
