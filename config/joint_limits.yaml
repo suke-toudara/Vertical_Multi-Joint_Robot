@@ -1,21 +1,29 @@
 # 関節リミット — ソフトリミット値
 # 必ず機構のメカストッパより内側に設定すること (docs/safety.md 参照)。
+#
+# 速度・トルクの値は 48V 駆動時のカタログ定格から算出 (docs/design_calculations.md §8)。
+#   AK80-64  : 48 rpm = 48 * 2pi / 60 = 5.03 rad/s
+#   EduLite05: 100 rpm = 100 * 2pi / 60 = 10.47 rad/s
+# 角加速度は構造剛性で決まる暫定値。FEA と実機の整定時間を見て確定する。
+# 可動範囲は機構設計が済んでいないため TBD。
 
-j1:
-  position_min_rad: 0.0   # TBD
-  position_max_rad: 0.0   # TBD
-  velocity_max_rad_s: 0.0
-  acceleration_max_rad_s2: 0.0
-  torque_max_nm: 0.0
-j2:
-  position_min_rad: 0.0
-  position_max_rad: 0.0
-  velocity_max_rad_s: 0.0
-  acceleration_max_rad_s2: 0.0
-  torque_max_nm: 0.0
-j3:
-  position_min_rad: 0.0
-  position_max_rad: 0.0
-  velocity_max_rad_s: 0.0
-  acceleration_max_rad_s2: 0.0
-  torque_max_nm: 0.0
+j1:                          # 旋回 / AK80-64
+  position_min_rad: 0.0      # TBD
+  position_max_rad: 0.0      # TBD
+  velocity_max_rad_s: 5.03
+  acceleration_max_rad_s2: 10.0
+  torque_max_nm: 48.0        # 連続定格。ピークは 120 N*m だが連続使用不可
+
+j2:                          # 肩 / AK80-64
+  position_min_rad: 0.0      # TBD
+  position_max_rad: 0.0      # TBD
+  velocity_max_rad_s: 5.03
+  acceleration_max_rad_s2: 10.0
+  torque_max_nm: 48.0
+
+j3:                          # 肘 / EduLite 05
+  position_min_rad: 0.0      # TBD
+  position_max_rad: 0.0      # TBD
+  velocity_max_rad_s: 10.47
+  acceleration_max_rad_s2: 10.0
+  torque_max_nm: 1.8         # ピーク 6 N*m。連続保持で超えさせないこと

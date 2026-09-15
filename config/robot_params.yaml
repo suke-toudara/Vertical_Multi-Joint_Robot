@@ -6,33 +6,64 @@ robot:
   name: vmjr
   dof: 3
 
+# アクチュエータ諸元 (カタログ値 — 確定)
+# 出典・選定根拠: docs/design_calculations.md
+actuators:
+  ak80_64:
+    model: "CubeMars AK80-64 KV80"
+    gear_ratio: 64
+    torque_rated_nm: 48.0
+    torque_peak_nm: 120.0
+    speed_rated_rpm_24v: 23
+    speed_rated_rpm_48v: 48
+    power_rated_w: 220
+    mass_kg: 0.85
+    backlash_arcmin: 10
+  edulite_05:
+    model: "RobStride EduLite 05"
+    gear_ratio: 9
+    torque_rated_nm: 1.8
+    torque_peak_nm: 6.0
+    speed_rated_rpm: 100
+    mass_kg: 0.242
+    backlash_arcmin: null    # 未公開。実測して埋める
+
+# 設計条件 (可搬質量・速度の試算に使う値)
+design:
+  bus_voltage_v: 48          # 24V だと手先速度が半減する
+  safety_factor: 1.5         # 連続定格トルクに対して
+  angular_accel_rad_s2: 10.0 # 構造剛性で決まる。FEA後に見直す
+  tool_mass_kg: 0.20         # エンドエフェクタ質量 (ペイロードと等価に効く)
+
+# 質量は CAD 確定後に実測値へ置き換えること (現状は試算用の仮値)
 links:
   base:
     length_m: 0.0      # TBD: 設置面 → J2 軸 (L0)
     mass_kg: 0.0
     com_m: [0.0, 0.0, 0.0]
   upper_arm:
-    length_m: 0.0      # TBD: J2 軸 → J3 軸 (L1)
-    mass_kg: 0.0
-    com_m: [0.0, 0.0, 0.0]
+    length_m: 0.25     # 暫定: J2 軸 → J3 軸 (L1)
+    mass_kg: 0.35      # 仮値
+    com_m: [0.125, 0.0, 0.0]
   fore_arm:
-    length_m: 0.0      # TBD: J3 軸 → 手先基準点 (L2)
-    mass_kg: 0.0
-    com_m: [0.0, 0.0, 0.0]
+    length_m: 0.12     # 暫定: J3 軸 → 手先基準点 (L2)。可搬質量を直接左右する
+    mass_kg: 0.18      # 仮値
+    com_m: [0.06, 0.0, 0.0]
 
 joints:
-  j1:                  # 旋回
-    gear_ratio: 1.0    # TBD
-    encoder_cpr: 0     # TBD
+  j1:                    # 旋回
+    actuator: ak80_64
+    gear_ratio: 64
     direction: 1
-  j2:                  # 肩
-    gear_ratio: 1.0
-    encoder_cpr: 0
+  j2:                    # 肩
+    actuator: ak80_64
+    gear_ratio: 64
     direction: 1
-  j3:                  # 肘
-    gear_ratio: 1.0
-    encoder_cpr: 0
+  j3:                    # 肘
+    actuator: edulite_05
+    gear_ratio: 9
     direction: 1
 
 payload:
-  rated_kg: 0.0        # TBD
+  rated_kg: 0.62         # 暫定: 上記寸法・質量での試算値 (制約軸 J3)
+  limiting_joint: j3     # EduLite 05 の定格 1.8 N*m が唯一の制約

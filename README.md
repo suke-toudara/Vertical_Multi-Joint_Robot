@@ -19,6 +19,11 @@
 
 詳細な責務と運用ルールは **[docs/project_structure.md](docs/project_structure.md)** を参照。
 
+## 設計資料
+
+- **[docs/design_calculations.md](docs/design_calculations.md)** — 可搬質量・速度性能・位置決め精度の試算 (計算過程つき)。
+  数値は `tools/calc_payload.py` の出力で、前提を変えたら再実行して更新する。
+
 ## 設計上の原則
 
 1. **パラメータは `config/` に集約** — リンク長や減速比を CAD・URDF・ファームに
@@ -42,4 +47,7 @@ git lfs install && git lfs pull      # CAD・PDF は Git LFS 管理
 
 ## ステータス
 
-構成定義のみ。仕様の未決定事項は `docs/project_structure.md` 末尾のリストを参照。
+構成定義と、手持ちアクチュエータ (AK80-64 ×2 + EduLite 05) での性能試算まで。
+現時点の試算では **リーチ 370 mm / 可搬質量 0.62 kg / 手先速度 1.86 m/s** が
+成立見込み (詳細と前提は `docs/design_calculations.md`)。
+未決定事項は `docs/project_structure.md` 末尾のリストを参照。

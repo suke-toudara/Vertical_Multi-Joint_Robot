@@ -61,6 +61,7 @@ docs/
 ├── specifications.md      # 機体諸元 (確定値・リンク長・減速比・質量特性)
 ├── architecture.md        # システム構成図・信号フロー・通信仕様
 ├── kinematics.md          # DHパラメータ、順/逆運動学の導出と解の分岐
+├── design_calculations.md # 可搬質量・速度・精度の試算 (計算過程つき)
 ├── setup.md               # 開発環境構築 (ROS 2・ツールチェーン・CAD)
 ├── safety.md              # 非常停止・ソフトリミット・リスクアセスメント
 ├── adr/                   # Architecture Decision Record (設計判断の記録)
@@ -204,7 +205,8 @@ tests/
 tools/
 ├── gen_params.py          # config/ → URDF・ファームヘッダ生成
 ├── export_meshes.py       # CAD STL → vmjr_description/meshes 同期
-└── bom_merge.py           # 機械+電気 BOM の統合・発注リスト生成
+├── bom_merge.py           # 機械+電気 BOM の統合・発注リスト生成
+└── calc_payload.py        # 可搬質量・速度の試算 (design_calculations.md の出典)
 
 .github/workflows/
 ├── ci.yml                 # lint + robot_core のユニットテスト
