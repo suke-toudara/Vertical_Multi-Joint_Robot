@@ -1,0 +1,39 @@
+# ===== Git LFS 対象 (差分が取れないバイナリ) =====
+# CAD ネイティブ
+*.f3d    filter=lfs diff=lfs merge=lfs -text
+*.f3z    filter=lfs diff=lfs merge=lfs -text
+*.sldprt filter=lfs diff=lfs merge=lfs -text
+*.sldasm filter=lfs diff=lfs merge=lfs -text
+*.slddrw filter=lfs diff=lfs merge=lfs -text
+*.FCStd  filter=lfs diff=lfs merge=lfs -text
+*.ipt    filter=lfs diff=lfs merge=lfs -text
+*.iam    filter=lfs diff=lfs merge=lfs -text
+
+# 中間・メッシュ形式
+*.step   filter=lfs diff=lfs merge=lfs -text
+*.stp    filter=lfs diff=lfs merge=lfs -text
+*.iges   filter=lfs diff=lfs merge=lfs -text
+*.stl    filter=lfs diff=lfs merge=lfs -text
+*.dae    filter=lfs diff=lfs merge=lfs -text
+*.3mf    filter=lfs diff=lfs merge=lfs -text
+*.wrl    filter=lfs diff=lfs merge=lfs -text
+
+# ドキュメント・製造データ
+*.pdf    filter=lfs diff=lfs merge=lfs -text
+*.zip    filter=lfs diff=lfs merge=lfs -text
+*.png    filter=lfs diff=lfs merge=lfs -text
+*.jpg    filter=lfs diff=lfs merge=lfs -text
+*.mp4    filter=lfs diff=lfs merge=lfs -text
+
+# ===== LFS に入れない (テキストとして差分レビューする) =====
+# KiCad ソース
+*.kicad_sch  text
+*.kicad_pcb  text
+*.kicad_pro  text
+*.kicad_sym  text
+*.kicad_mod  text
+# ロボット記述・設定
+*.urdf   text
+*.xacro  text
+*.yaml   text
+*.csv    text

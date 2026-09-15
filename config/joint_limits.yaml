@@ -1,0 +1,21 @@
+# 関節リミット — ソフトリミット値
+# 必ず機構のメカストッパより内側に設定すること (docs/safety.md 参照)。
+
+j1:
+  position_min_rad: 0.0   # TBD
+  position_max_rad: 0.0   # TBD
+  velocity_max_rad_s: 0.0
+  acceleration_max_rad_s2: 0.0
+  torque_max_nm: 0.0
+j2:
+  position_min_rad: 0.0
+  position_max_rad: 0.0
+  velocity_max_rad_s: 0.0
+  acceleration_max_rad_s2: 0.0
+  torque_max_nm: 0.0
+j3:
+  position_min_rad: 0.0
+  position_max_rad: 0.0
+  velocity_max_rad_s: 0.0
+  acceleration_max_rad_s2: 0.0
+  torque_max_nm: 0.0

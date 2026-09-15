@@ -1,0 +1,38 @@
+# 機体パラメータ — 全設計データの正本
+# ここを変更したら tools/gen_params.py で URDF とファームヘッダを再生成する。
+# 値は TBD。docs/requirements.md → simulation/notebooks/ の検討を経て確定させる。
+
+robot:
+  name: vmjr
+  dof: 3
+
+links:
+  base:
+    length_m: 0.0      # TBD: 設置面 → J2 軸 (L0)
+    mass_kg: 0.0
+    com_m: [0.0, 0.0, 0.0]
+  upper_arm:
+    length_m: 0.0      # TBD: J2 軸 → J3 軸 (L1)
+    mass_kg: 0.0
+    com_m: [0.0, 0.0, 0.0]
+  fore_arm:
+    length_m: 0.0      # TBD: J3 軸 → 手先基準点 (L2)
+    mass_kg: 0.0
+    com_m: [0.0, 0.0, 0.0]
+
+joints:
+  j1:                  # 旋回
+    gear_ratio: 1.0    # TBD
+    encoder_cpr: 0     # TBD
+    direction: 1
+  j2:                  # 肩
+    gear_ratio: 1.0
+    encoder_cpr: 0
+    direction: 1
+  j3:                  # 肘
+    gear_ratio: 1.0
+    encoder_cpr: 0
+    direction: 1
+
+payload:
+  rated_kg: 0.0        # TBD
