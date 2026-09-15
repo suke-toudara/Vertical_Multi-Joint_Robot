@@ -36,10 +36,10 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements-docs.txt
 
-      # enablement: true で Pages が未設定でも自動で有効化する
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true
+      # 注: actions/configure-pages は使わない。
+      #  - base_url は mkdocs.yml の site_url で明示しているので不要
+      #  - enablement による Pages 自動有効化は GITHUB_TOKEN の権限では失敗する
+      #    (Settings > Pages > Source: GitHub Actions を一度だけ手動で設定すること)
 
       # --strict: リンク切れや不正な nav をビルド失敗として検出する
       - name: Build site

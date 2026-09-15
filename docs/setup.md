@@ -36,3 +36,26 @@ source install/setup.bash
 
 - CAD: TBD (Fusion 360 / SolidWorks / FreeCAD)
 - 基板: KiCad 8 以降。共通ライブラリは `electrical/pcb/lib/` をプロジェクトに登録する。
+
+## ドキュメントサイト (GitHub Pages)
+
+本サイトは MkDocs Material で生成し、デフォルトブランチへの push で自動デプロイされる。
+
+```bash
+pip install -r requirements-docs.txt
+mkdocs serve                  # http://127.0.0.1:8000 でプレビュー
+mkdocs build --strict         # CI と同じチェック (リンク切れで失敗する)
+```
+
+- 設定: `mkdocs.yml` (ナビゲーションはここに手で追加する)
+- ワークフロー: `.github/workflows/docs.yml`
+- 公開URL: <https://suke-toudara.github.io/Vertical_Multi-Joint_Robot/>
+
+新しいドキュメントを追加したら `mkdocs.yml` の `nav:` にも追記すること。
+`--strict` を付けているので、nav から漏れたページやリンク切れは CI で失敗する。
+
+### 初回のみ必要な手動設定
+
+リポジトリの **Settings → Pages** で **Source** を **GitHub Actions** に設定する。
+`GITHUB_TOKEN` には Pages サイトを新規作成する権限がないため、
+この操作だけはワークフローから自動化できない (一度設定すれば以降は不要)。

@@ -44,6 +44,12 @@ mkdocs serve          # http://127.0.0.1:8000
 `docs/` 以下を更新してデフォルトブランチに push すると、
 `.github/workflows/docs.yml` が自動でビルド・デプロイする。
 
+> **初回のみ手動設定が必要**: GitHub の
+> [Settings → Pages](https://github.com/suke-toudara/Vertical_Multi-Joint_Robot/settings/pages)
+> で **Source** を **GitHub Actions** に設定する。
+> `GITHUB_TOKEN` には Pages サイトを新規作成する権限がないため、
+> この1ステップだけはワークフローから自動化できない。
+
 ## 設計上の原則
 
 1. **パラメータは `config/` に集約** — リンク長や減速比を CAD・URDF・ファームに
